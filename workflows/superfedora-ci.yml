@@ -39,4 +39,19 @@ jobs:
         with:
           targets: x86_64-unknown-linux-musl
       - name: Build release binaries
-        run: cargo build --release --target x86_64-unknown-linux-musl
+        run: |
+          cargo build --release --target x86_64-unknown-linux-musl
+          mkdir -p dist
+          for f in target/x86_64-unknown-linux-musl/release/*; do
+            if [ -f "$f" ] && [ -x "$f" ]; then
+              cp "$f" "dist/$(basename "$f")-x86_64-unknown-linux-musl"
+            fi
+          done
+      - name: Publish Tier-1 Static musl Release Assets
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --generate-notes
+          gh release upload "$TAG" dist/*-x86_64-unknown-linux-musl --clobber
