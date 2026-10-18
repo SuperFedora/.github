@@ -11,7 +11,7 @@ curl -fsSL https://superfedora.github.io/install.sh | bash
 
 ### Organization Repositories
 
-* [**superfedora**](https://github.com/SuperFedora/superfedora) — Core orchestrator CLI/TUI (`superfedora` / `sf` alias), `systemd` session & OS tuning, modular installers (`00..90`), and dotfiles.
+* [**superfedora**](https://github.com/SuperFedora/superfedora) — Core orchestrator CLI/TUI (`superfedora`), `systemd` session & OS tuning, modular installers (`00..90`), and dotfiles.
 * [**superforge**](https://github.com/SuperFedora/superforge) — Native Rust `-march=native` / LTO source builder (`superforge`), recipe catalog, and chromeless Firefox WebApp engine.
 * [**supertheme**](https://github.com/SuperFedora/supertheme) — Native Rust 16-bit theme & SFX controller (`supertheme`), 16 rainbow palettes, wallpapers, 10 animated cast portraits, and WAV synth.
 * [**supershell**](https://github.com/SuperFedora/supershell) — Native Rust 16-bit desktop shell workspace (`superdock`, `superbar`, `supersettings`, `superlock`).
